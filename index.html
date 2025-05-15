@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>Docker</title>
+</head>
+<body>
+    <div id = "upper-rectangle">
+        <h1> Docker</h1>
+        <p id="subtitle"> Desenvolvimento em Containers</p>
+    </div>
+
+     <h2> Índice </h2>
+
+
+     <h2> Introdução </h2>
+     <p>
+        A conteinerização permite o funcionamento de diversos sistemas isolados dentro de um único sistema operacional, dividindo um único host, ou seja, o mesmo kernel (núcleo),  hardware e drivers do sistema e isolando o ambiente, ou seja, as bibliotecas, dependências, processos, usuários, etc.  Os containers são cada um desses ambientes isolados rodando em um servidor. Dentro deles é possível desenvolver, instalar, distribuir e testar softwares que serão compatíveis em diversos sistemas finais independente do seu sistema operacional, já que estarão funcionando em cima de um mesmo ambiente, que pode já estar munido de todas as dependências necessárias para a aplicação em cima do sistema operacional do hospedeiro.
+Desenvolvido pela empresa dotCloud, Inc (atual Docker, INC) no ano de 2013, Docker é uma plataforma open source que tem como objetivo trazer a conteinerização visando facilitar a criação e controle dos containers, além de trazer diversos outros serviços para a produtividade, disponível como Docker Hub e Docker Desktop.
+     </p>
+     <h2> Arquitetura </h2>
+     <p>
+        O Docker é uma plataforma de código aberto voltada à criação, empacotamento e execução de aplicações em containers. A sua arquitetura é baseada em um modelo cliente-servidor composto por três elementos principais: o Docker Client, o Docker Host e o Docker Registry.
+O Docker Client é o ponto de entrada do usuário. Ele envia comandos para o Docker Daemon, também conhecido como Docker Engine, que executa esses comandos, como a construção de imagens, o gerenciamento de containers e a comunicação com registries. O Docker Daemon é responsável por criar e administrar containers, que são instâncias isoladas e eficientes de uma aplicação.
+O Docker Host é o ambiente onde o Docker Daemon opera e os containers são executados. Ele contém os recursos necessários para o funcionamento da aplicação e compartilha o kernel do sistema operacional com os containers, promovendo desempenho superior em relação a arquiteturas tradicionais de virtualização.
+O Docker Registry é o local onde as imagens Docker são armazenadas e versionadas. O repositório mais conhecido é o Docker Hub, mas também é possível configurar registries privados. As imagens são camadas empilháveis que definem o comportamento da aplicação e suas dependências, permitindo consistência na execução em diversos ambientes (DOCKER, 2024; TURNBULL, 2014).
+Além disso, o Docker oferece mecanismos robustos de rede (SPACELIFT, 2024), orquestração (com ferramentas como Docker Swarm e Kubernetes), e persistência de dados, elementos essenciais para ambientes complexos, como arquiteturas baseadas em microserviços e pipelines de CI/CD.
+Essa arquitetura modular e enxuta resulta em uma solução altamente portátil, escalável e eficiente, sendo adotada em larga escala por empresas que buscam otimizar seus ciclos de desenvolvimento e operações (IBM, 2024; AWS, 2024).
+     </p>
+     <h2> Docker vs Máquinas Virtuais </h2>
+     <p>
+        A comparação entre Docker e Máquinas Virtuais (MVs) envolve diferenças fundamentais na maneira como cada tecnologia gerencia o isolamento de aplicações e o uso de recursos do sistema.
+As Máquinas Virtuais operam sobre um hipervisor, que permite a execução simultânea de múltiplos sistemas operacionais sobre um mesmo hardware. Cada MV possui seu próprio kernel, sistema de arquivos, bibliotecas e dependências. Isso garante isolamento completo, mas com um custo alto em termos de desempenho e consumo de recursos (KUMAR; SHARMA, 2017). O tempo de inicialização das MVs é relativamente elevado, e a densidade de instâncias por servidor físico é limitada.
+O Docker, por sua vez, utiliza uma abordagem de contenção baseada no compartilhamento do kernel do sistema operacional do host. Cada container contém apenas o necessário para a aplicação funcionar, como bibliotecas específicas e arquivos binários. Isso reduz consideravelmente o uso de CPU, memória e armazenamento, além de permitir inicializações quase instantâneas (DUPCLOUD, 2024).
+Outra vantagem do Docker é a sua portabilidade. Como os containers encapsulam todas as dependências da aplicação, eles podem ser executados em qualquer ambiente compatível com Docker, sem a necessidade de configuração adicional, o que não é trivial em ambientes com MVs.
+No entanto, o Docker não substitui completamente as máquinas virtuais. Em cenários onde é necessário executar sistemas operacionais distintos ou quando há requisitos de isolamento extremamente rigorosos (como em ambientes multi-tenant sensíveis), as MVs ainda são a escolha mais adequada.
+Segundo a AWS (2024), uma combinação de ambas as tecnologias pode ser vantajosa, utilizando VMs para fornecer camadas de isolamento seguras e Docker para empacotar e escalar aplicações de forma leve e flexível. Essa abordagem híbrida é cada vez mais comum em arquiteturas modernas.
+     </p>
+     <h2> Docker Networking </h2>
+     <p>
+O Docker contém um sistema de conexão para comunicação entre containers que estejam em uma mesma rede, contendo um conjunto de ferramentas de manejo dessa conexão e diversos drivers nativos, à escolha do programador. 
+A conexão mais usada é a Bridge Network, que cria uma “ponte de software” (software bridge) entre o host e o container. Containers conectados a uma mesma rede (e mesmo Docker daemon, a menos que modificado) podem se comunicar entre si, mas não com sistemas de fora da rede. Cada contêiner recebe um endereço de IP, mas não aparecem como dispositivos físicos na rede LAN. Com isso, também se faz necessário o uso do serviço de DNS para identificação dos
+O tipo Host Network faz a conexão direta com a placa de rede do hospedeiro, fazendo parte da sua rede local. Nesse caso, o container não possui seu próprio endereço de IP. Esse caso é mais usado quando há um fluxo intenso de dados, sendo necessário a alocação de um número alto de portas de conexão TCP.
+A conexão Overlay Network já serve para criar conexão entre diferentes hosts de Docker daemon sem a necessidade de suporte de roteamento em nível de sistema operacional. Esse tipo de conexão é mais usado para o chamado “Docker Swarm Clusters”, exames.
+Além desses, existem diversos outros tipos de conexão que podem ser feitas com o docker, cada uma com suas especificações e interações com a camada de rede.
+     </p>
+     <h2> Vantagens e desvantagens </h2>
+     <p>
+        Como vimos,  Docker  se destaca por sua compatibilidade ampla, flexibilidade e capacidade de escalar facilmente, o que o torna atraente para desenvolvedores. No entanto, também apresenta algumas desvantagens que precisam ser consideradas antes da adoção. Aqui está um resumo de seus prós e contras:
+     </p>
+     <h3> Vantagens do Docker: </h3>
+        <p> Consistência entre plataformas e portabilidade: Funciona em diferentes sistemas operacionais (Linux, Windows, Mac), garantindo uniformidade no desenvolvimento e implantação.
+Armazenamento sem servidor: Os contêineres são baseados em nuvem, sem a necessidade de baixarmos um sistema operacional específico para usá-los.
+Alta velocidade de implantação: Reduz a necessidade de configurações repetitivas, permitindo implantação rápida com poucos comandos.
+Flexibilidade e escalabilidade: Suporta qualquer linguagem de programação e pode facilmente  realocar recursos de acordo com a necessidade.</p>
+
+<h3> Desvantagens do Docker: </h3>
+<p>Documentação desatualizada: A documentação oficial nem sempre acompanha as mudanças na plataforma.
+Curva de aprendizado íngreme: Apesar de fácil de começar, pode ser difícil dominar totalmente.
+Problemas de segurança: A falta de isolamento completo pode expor contêineres a vulnerabilidades do sistema hospedeiro.
+Orquestração limitada: Não possui capacidade de automatização e orquestração tão desenvolvidas como outras plataformas. Assim, gerenciar vários contêineres pode ser desafiador.
+     </p>
+     <h2> Segurança do Docker </h2>
+     <p>
+        A segurança no Docker se baseia em cinco áreas importantes que ajudam a proteger o ambiente de contêineres. Uma das principais é o isolamento de processos, na qual o  Docker usa funcionalidades do kernel Linux chamadas namespaces e control groups (ou cgroups). Os namespaces garantem que cada contêiner funcione de forma isolada, sem enxergar ou interferir nos processos de outros contêineres ou do sistema principal. Já os cgroups controlam quanto de CPU, memória e disco cada contêiner pode usar, evitando que um deles consuma todos os recursos e cause instabilidade.
+Outro ponto essencial é a segurança do Docker daemon, que é o serviço responsável por criar e gerenciar os contêineres. O daemon roda com permissões de administrador (root), então só usuários confiáveis devem ter acesso a ele. Por isso, para evitar riscos, é importante que a comunicação com o daemon ocorra de forma segura, usando Unix sockets, TLS ou SSH. Configurações incorretas ou permissões mal definidas podem permitir que contêineres tenham acesso indevido ao sistema do host, representando uma falha crítica de segurança.
+O Docker também limita, por padrão, o que os processos dentro dos contêineres podem fazer. Ele usa um sistema chamado "capabilities", que substitui a ideia de “tudo ou nada” do root tradicional por um controle mais detalhado. Com isso, mesmo que um invasor consiga acesso como root dentro do contêiner, suas ações ainda estarão bastante limitadas. É possível personalizar essas permissões, sendo recomendável sempre manter apenas as capacidades realmente necessárias para a aplicação.
+Para garantir que as imagens utilizadas sejam confiáveis, o Docker conta com o recurso chamado Docker Content Trust. Quando essa função está ativada, o Docker só permite executar imagens que tenham uma assinatura digital válida. Isso ajuda a impedir o uso de imagens alteradas ou comprometidas por terceiros, garantindo mais segurança no processo de deploy.
+Além disso, o Docker é compatível com mecanismos avançados de segurança do Linux, como AppArmor, SELinux, GRSEC e User Namespaces. Esses recursos permitem, por exemplo, mapear o usuário root de dentro do contêiner para um usuário comum no sistema host, reduzindo ainda mais os riscos de ataques ou acessos não autorizados. 
+     </p>
+     <h2> Casos de Uso </h2>
+     <p>
+        O Docker é amplamente utilizado no desenvolvimento moderno de software, uma vez que consegue empacotar aplicações e suas dependências em contêineres portáteis e consistentes. Tal habilidade é muito bem vinda, pois facilita o deploy em diferentes ambientes — seja localmente, em servidores de teste ou em produção — sem o clássico problema do “funciona na minha máquina”. Ele também se faz útil em arquiteturas de microserviços, em que cada componente da aplicação pode ser executado em seu próprio contêiner, o que permite escalabilidade, facilita atualizações pontuais e melhora o isolamento entre serviços.
+Além disso, o Docker é uma ferramenta essencial em pipelines de DevOps e CI/CD, já que  permite a automação de testes e deploys com ambientes padronizados.  A portabilidade de seus  contêineres também facilita estratégias multi-cloud e híbridas, enquanto sua leveza e flexibilidade tornam mais simples a criação de ambientes de teste sob demanda ou a modernização de aplicações legadas, trazendo maior agilidade e controle para todo o ciclo de vida do software.
+     </p>
+     <h2> Bibliografia </h2>
+     <ul>
+        <li>
+            AMAZON WEB SERVICES (AWS). Qual é a diferença entre o Docker e uma VM? Disponível em: <a href="https://aws.amazon.com/pt/compare/the-difference-between-docker-vm/">https://aws.amazon.com/pt/compare/the-difference-between-docker-vm/</a>. Acesso em: 08 maio 2025.
+        </li> 
+        <li>
+            DOCKER. Docker Documentation. Disponível em: <a href="https://docs.docker.com/manuals/">https://docs.docker.com/manuals/</a>. Acesso em: 08 maio 2025.
+        </li> 
+        <li>
+            DOCKER. Docker Overview. Disponível em: <a href="https://docs.docker.com/get-started/overview/">https://docs.docker.com/get-started/overview/</a>. Acesso em: 08 maio 2025.
+        </li>
+        <li>
+            DUPCLOUD. Docker Advantages and Disadvantages. <a href="Disponível em: https://duplocloud.com/blog/docker-advantages-and-disadvantages/">Disponível em: https://duplocloud.com/blog/docker-advantages-and-disadvantages/</a>. Acesso em: 08 maio 2025.</li>
+        </li>
+        <li>
+            KUMAR, Nitish; SHARMA, Priyanka. An introduction to Docker and analysis of its performance. ResearchGate, 2017. Disponível em: <a href="https://www.researchgate.net/publication/318816158_An_Introduction_to_Docker_and_Analysis_of_its_Performance">https://www.researchgate.net/publication/318816158_An_Introduction_to_Docker_and_Analysis_of_its_Performance</a>. Acesso em: 08 maio 2025.</li>
+        </li>
+        <li>
+            SPACELIFT. Docker Networking. Disponível em: <a href="https://spacelift.io/blog/docker-networking">https://spacelift.io/blog/docker-networking</a>. Acesso em: 08 maio 2025.</li>
+        </li>
+        <li>
+            WIKIPÉDIA. Docker (software). In: Wikipédia: a enciclopédia livre. Disponível em: <a href="https://pt.wikipedia.org/wiki/Docker_(software)">https://pt.wikipedia.org/wiki/Docker_(software)</a>. Acesso em: 08 maio 2025.</li>
+        </li>
+        <li>
+            SINGH, Rahul. What is Docker and use cases of Docker? DevOpsSchool, 13 dez. 2023. Disponível em: <a href="https://www.devopsschool.com/blog/what-is-docker-and-use-cases-of-docker/">https://www.devopsschool.com/blog/what-is-docker-and-use-cases-of-docker/</a>. Acesso em: 08 maio 2025.</li>
+        </li>
+        <li>
+            DOCKER. Docker Engine Security. Docker Documentation, [s.d.]. Disponível em: <a href="https://docs.docker.com/engine/security/#:~:text=this%20blog%20post%20.-,Conclusions,privileged%20users%20inside%20the%20container">https://docs.docker.com/engine/security/#:~:text=this%20blog%20post%20.-,Conclusions,privileged%20users%20inside%20the%20container</a>. Acesso em: 8 maio 2025.</li>
+        </li>
+        <li>
+            4LINUX. O que é docker. Disponível em: <a href="https://4linux.com.br/o-que-e-docker/#:~:text=Originalmente%20o%20Docker%20surgiu%20em,'%20em%20Santa%20Clara%2C%20Calif%C3%B3rnia">https://4linux.com.br/o-que-e-docker/#:~:text=Originalmente%20o%20Docker%20surgiu%20em,'%20em%20Santa%20Clara%2C%20Calif%C3%B3rnia</a>.</li>
+        </li>
+    </ul>
+
+    <div id = "lower-rectangle">
+        <p id = "thanks">
+            Trabalho produzido por: <br>
+            Luiza Costa Pacheco<br>
+            Julia Paoli de Andrade<br>
+            Tiago Vieira Santos
+
+        </p>
+
+    </div>
+</body>
+</html>
