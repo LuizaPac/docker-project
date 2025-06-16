@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <title>Docker - Introdução</title>
 </head>
@@ -14,13 +15,30 @@
     <div class="sidebar">
         <h2>Menu</h2>
         <ul>
-            <div><li class="deactive"><a href="index.html">Introdução</a></li></div>
-            <div><li class="deactive"><a href="arquitetura.html">Arquitetura</a></li></div>
-            <div><li class="deactive"><a href="docker-vs-vm.html">Docker vs VMs</a></li></div>
-            <div><li class="deactive"><a href="docker-networking.html">Docker Networking</a></li></div>
-            <div><li class="active"><a href="vantagens-desvantagens.html">Vantagens e Desvantagens</a></li></div>
-            <div><li class="deactive"><a href="seguranca.html">Segurança</a></li></div>
-            <div><li class="deactive"><a href="casos-uso.html">Casos de Uso</a></li></div>
+            <div>
+                <li class="deactive"><a href="index.html">Introdução</a></li>
+            </div>
+            <div>
+                <li class="deactive"><a href="arquitetura.html">Arquitetura</a></li>
+            </div>
+            <div>
+                <li class="deactive"><a href="docker-vs-vm.html">Docker vs VMs</a></li>
+            </div>
+            <div>
+                <li class="deactive"><a href="docker-networking.html">Docker Networking</a></li>
+            </div>
+            <div>
+                <li class="active"><a href="vantagens-desvantagens.html">Vantagens e Desvantagens</a></li>
+            </div>
+            <div>
+                <li class="deactive"><a href="seguranca.html">Segurança</a></li>
+            </div>
+            <div>
+                <li class="deactive"><a href="casos-uso.html">Casos de Uso</a></li>
+            </div>
+            <div>
+                <li class="deactive"><a href="bibliografia.html">Bibliografia</a></li>
+            </div>
         </ul>
     </div>
 
@@ -37,61 +55,73 @@
     <div class="wrap">
 
         <div class="content">
-           <h1 id="vantagens">Vantagens e Desvantagens do Docker</h1>
+            <h1 id="vantagens">Vantagens e Desvantagens do Docker</h1>
             <h2>Vantagens do Docker:</h2>
             <ul>
-            <li>
-                <strong>Portabilidade e Consistência:</strong> 
-                <ul>
-                O Docker garante que a aplicação funcione da mesma forma em qualquer lugar. Isso significa que, não importa se você está usando Windows, Linux ou Mac, o ambiente dentro do contêiner é sempre igual. Isso evita aquele clássico problema de "na minha máquina funciona".
-                </ul>
-            </li>
-            <li>
-                <strong>Leveza e Menor Uso de Recursos:</strong> 
-                <ul>
-                Diferente de máquinas virtuais que carregam um sistema operacional inteiro, o Docker utiliza os recursos do próprio sistema hospedeiro, tornando-o muito mais leve e rápido.
-                </ul>
-            </li>
-            <li>
-                <strong>Implantação Rápida:</strong> 
-                <ul>
-                Os contêineres são iniciados em questão de segundos. Isso porque eles não precisam passar por todo o processo de inicialização de um sistema operacional, o que torna o desenvolvimento, os testes e a publicação muito mais ágeis.
-                </ul>
-            </li>
-            <li>
-                <strong>Escalabilidade e Flexibilidade:</strong> 
-                <ul>
-                É possível rodar vários contêineres ao mesmo tempo, aumentando ou reduzindo conforme a demanda. Além disso, o Docker suporta qualquer linguagem de programação, tornando-se uma ferramenta muito flexível para diferentes tipos de projetos.
-                </ul>
-            </li>
+                <li>
+                    <strong>Portabilidade e Consistência:</strong>
+                    <ul>
+                        O Docker garante que a aplicação funcione da mesma forma em qualquer lugar. Isso significa que,
+                        não importa se você está usando Windows, Linux ou Mac, o ambiente dentro do contêiner é sempre
+                        igual. Isso evita aquele clássico problema de "na minha máquina funciona".
+                    </ul>
+                </li>
+                <li>
+                    <strong>Leveza e Menor Uso de Recursos:</strong>
+                    <ul>
+                        Diferente de máquinas virtuais que carregam um sistema operacional inteiro, o Docker utiliza os
+                        recursos do próprio sistema hospedeiro, tornando-o muito mais leve e rápido.
+                    </ul>
+                </li>
+                <li>
+                    <strong>Implantação Rápida:</strong>
+                    <ul>
+                        Os contêineres são iniciados em questão de segundos. Isso porque eles não precisam passar por
+                        todo o processo de inicialização de um sistema operacional, o que torna o desenvolvimento, os
+                        testes e a publicação muito mais ágeis.
+                    </ul>
+                </li>
+                <li>
+                    <strong>Escalabilidade e Flexibilidade:</strong>
+                    <ul>
+                        É possível rodar vários contêineres ao mesmo tempo, aumentando ou reduzindo conforme a demanda.
+                        Além disso, o Docker suporta qualquer linguagem de programação, tornando-se uma ferramenta muito
+                        flexível para diferentes tipos de projetos.
+                    </ul>
+                </li>
             </ul>
 
             <h2>Desvantagens do Docker:</h2>
             <ul>
-            <li>
-                <strong>Documentação Nem Sempre Atualizada:</strong> 
-                <ul>
-                Como a tecnologia evolui rapidamente, muitas vezes a documentação oficial não acompanha todas as mudanças, o que pode gerar dúvidas para quem está começando.
-                </ul>
-            </li>
-            <li>
-                <strong>Curva de Aprendizado:</strong> 
-                <ul>
-                É fácil começar a usar Docker para rodar contêineres simples, mas entender conceitos mais avançados — como redes, volumes, e segurança — exige estudo e prática.
-                </ul>
-            </li>
-            <li>
-                <strong>Segurança Limitada:</strong> 
-                <ul>
-                Os contêineres compartilham o mesmo kernel do sistema hospedeiro. Isso significa que, se um contêiner for comprometido, ele pode, em alguns casos, afetar o sistema inteiro.
-                </ul>
-            </li>
-            <li>
-                <strong>Gerenciamento de Vários Contêineres:</strong> 
-                <ul>
-                O Docker sozinho não faz orquestração. Quando o número de contêineres cresce, é necessário usar outras ferramentas, como o Kubernetes ou Docker Swarm, para gerenciar, escalar e garantir alta disponibilidade.
-                </ul>
-            </li>
+                <li>
+                    <strong>Documentação Nem Sempre Atualizada:</strong>
+                    <ul>
+                        Como a tecnologia evolui rapidamente, muitas vezes a documentação oficial não acompanha todas as
+                        mudanças, o que pode gerar dúvidas para quem está começando.
+                    </ul>
+                </li>
+                <li>
+                    <strong>Curva de Aprendizado:</strong>
+                    <ul>
+                        É fácil começar a usar Docker para rodar contêineres simples, mas entender conceitos mais
+                        avançados — como redes, volumes, e segurança — exige estudo e prática.
+                    </ul>
+                </li>
+                <li>
+                    <strong>Segurança Limitada:</strong>
+                    <ul>
+                        Os contêineres compartilham o mesmo kernel do sistema hospedeiro. Isso significa que, se um
+                        contêiner for comprometido, ele pode, em alguns casos, afetar o sistema inteiro.
+                    </ul>
+                </li>
+                <li>
+                    <strong>Gerenciamento de Vários Contêineres:</strong>
+                    <ul>
+                        O Docker sozinho não faz orquestração. Quando o número de contêineres cresce, é necessário usar
+                        outras ferramentas, como o Kubernetes ou Docker Swarm, para gerenciar, escalar e garantir alta
+                        disponibilidade.
+                    </ul>
+                </li>
             </ul>
 
             <img src="./images/vantagens-docker.jpg" alt="Vantagens do Docker">

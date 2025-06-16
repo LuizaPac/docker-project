@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <title>Docker - Introdução</title>
 </head>
@@ -14,13 +15,30 @@
     <div class="sidebar">
         <h2>Menu</h2>
         <ul>
-            <div><li class="deactive"><a href="index.html">Introdução</a></li></div>
-            <div><li class="deactive"><a href="arquitetura.html">Arquitetura</a></li></div>
-            <div><li class="deactive"><a href="docker-vs-vm.html">Docker vs VMs</a></li></div>
-            <div><li class="deactive"><a href="docker-networking.html">Docker Networking</a></li></div>
-            <div><li class="deactive"><a href="vantagens-desvantagens.html">Vantagens e Desvantagens</a></li></div>
-            <div><li class="active"><a href="seguranca.html">Segurança</a></li></div>
-            <div><li class="deactive"><a href="casos-uso.html">Casos de Uso</a></li></div>
+            <div>
+                <li class="deactive"><a href="index.html">Introdução</a></li>
+            </div>
+            <div>
+                <li class="deactive"><a href="arquitetura.html">Arquitetura</a></li>
+            </div>
+            <div>
+                <li class="deactive"><a href="docker-vs-vm.html">Docker vs VMs</a></li>
+            </div>
+            <div>
+                <li class="deactive"><a href="docker-networking.html">Docker Networking</a></li>
+            </div>
+            <div>
+                <li class="deactive"><a href="vantagens-desvantagens.html">Vantagens e Desvantagens</a></li>
+            </div>
+            <div>
+                <li class="active"><a href="seguranca.html">Segurança</a></li>
+            </div>
+            <div>
+                <li class="deactive"><a href="casos-uso.html">Casos de Uso</a></li>
+            </div>
+            <div>
+                <li class="deactive"><a href="bibliografia.html">Bibliografia</a></li>
+            </div>
         </ul>
     </div>
 
@@ -42,49 +60,59 @@
             <h1 id="seguranca">Segurança no Docker</h1>
             <h2>1. Isolamento de Processos</h2>
             <p>
-            O Docker garante que cada contêiner funcione de forma isolada, sem interferir em outros contêineres ou no sistema principal. Isso é possível graças a duas tecnologias do kernel Linux:
+                O Docker garante que cada contêiner funcione de forma isolada, sem interferir em outros contêineres ou
+                no sistema principal. Isso é possível graças a duas tecnologias do kernel Linux:
             </p>
             <ul>
-            <li><strong>Namespaces:</strong> Isolam o ambiente de cada contêiner, impedindo que ele veja ou interaja com processos de outros contêineres ou do host.</li>
-            <li><strong>Control Groups (cgroups):</strong> Controlam e limitam o uso de recursos, como CPU, memória e disco, evitando que um contêiner sobrecarregue o sistema.</li>
+                <li><strong>Namespaces:</strong> Isolam o ambiente de cada contêiner, impedindo que ele veja ou interaja
+                    com processos de outros contêineres ou do host.</li>
+                <li><strong>Control Groups (cgroups):</strong> Controlam e limitam o uso de recursos, como CPU, memória
+                    e disco, evitando que um contêiner sobrecarregue o sistema.</li>
             </ul>
 
             <h2>2. Segurança do Docker Daemon</h2>
             <p>
-            O Docker daemon é o serviço que cria e gerencia os contêineres. Ele roda com permissões de administrador (root), o que representa um ponto crítico de segurança. Por isso:
+                O Docker daemon é o serviço que cria e gerencia os contêineres. Ele roda com permissões de administrador
+                (root), o que representa um ponto crítico de segurança. Por isso:
             </p>
             <ul>
-            <li>Apenas usuários confiáveis devem ter acesso ao daemon.</li>
-            <li>A comunicação com o daemon deve ser protegida usando <strong>Unix sockets, TLS ou SSH</strong>.</li>
-            <li>Permissões mal configuradas podem permitir que um contêiner acesse o sistema do host, causando riscos graves.</li>
+                <li>Apenas usuários confiáveis devem ter acesso ao daemon.</li>
+                <li>A comunicação com o daemon deve ser protegida usando <strong>Unix sockets, TLS ou SSH</strong>.</li>
+                <li>Permissões mal configuradas podem permitir que um contêiner acesse o sistema do host, causando
+                    riscos graves.</li>
             </ul>
 
             <h2>3. Limitação de Permissões com Capabilities</h2>
             <p>
-            Por padrão, o Docker restringe o que os processos dentro do contêiner podem fazer, mesmo que estejam rodando como usuário root dentro do contêiner. Isso é feito usando:
+                Por padrão, o Docker restringe o que os processos dentro do contêiner podem fazer, mesmo que estejam
+                rodando como usuário root dentro do contêiner. Isso é feito usando:
             </p>
             <ul>
-            <li><strong>Linux Capabilities:</strong> Permitem conceder apenas os privilégios estritamente necessários, substituindo a lógica tradicional de “root tem acesso total”.</li>
-            <li>É possível remover capacidades que não são necessárias, reduzindo a superfície de ataque.</li>
+                <li><strong>Linux Capabilities:</strong> Permitem conceder apenas os privilégios estritamente
+                    necessários, substituindo a lógica tradicional de “root tem acesso total”.</li>
+                <li>É possível remover capacidades que não são necessárias, reduzindo a superfície de ataque.</li>
             </ul>
 
             <h2>4. Verificação de Imagens (Docker Content Trust)</h2>
             <p>
-            Para garantir que as imagens usadas sejam seguras e não comprometidas, o Docker possui o recurso chamado <strong>Docker Content Trust (DCT)</strong>. Quando ativado:
+                Para garantir que as imagens usadas sejam seguras e não comprometidas, o Docker possui o recurso chamado
+                <strong>Docker Content Trust (DCT)</strong>. Quando ativado:
             </p>
             <ul>
-            <li>O Docker só executa imagens que possuam uma <strong>assinatura digital válida</strong>.</li>
-            <li>Isso impede que imagens maliciosas ou alteradas sejam usadas sem que o usuário perceba.</li>
+                <li>O Docker só executa imagens que possuam uma <strong>assinatura digital válida</strong>.</li>
+                <li>Isso impede que imagens maliciosas ou alteradas sejam usadas sem que o usuário perceba.</li>
             </ul>
 
             <h2>5. Recursos Avançados de Segurança</h2>
             <p>
-            O Docker pode ser integrado a mecanismos adicionais de segurança oferecidos pelo Linux, como:
+                O Docker pode ser integrado a mecanismos adicionais de segurança oferecidos pelo Linux, como:
             </p>
             <ul>
-            <li><strong>AppArmor e SELinux:</strong> Aplicam políticas de segurança que limitam o que os processos podem fazer.</li>
-            <li><strong>GRSEC:</strong> Fornece reforços extras de segurança no kernel.</li>
-            <li><strong>User Namespaces:</strong> Permitem mapear o usuário root dentro do contêiner para um usuário comum no sistema host, reduzindo drasticamente os riscos de acesso indevido.</li>
+                <li><strong>AppArmor e SELinux:</strong> Aplicam políticas de segurança que limitam o que os processos
+                    podem fazer.</li>
+                <li><strong>GRSEC:</strong> Fornece reforços extras de segurança no kernel.</li>
+                <li><strong>User Namespaces:</strong> Permitem mapear o usuário root dentro do contêiner para um usuário
+                    comum no sistema host, reduzindo drasticamente os riscos de acesso indevido.</li>
             </ul>
 
             <img src="./images/docker-seguranca.jpg" alt="Segurança no Docker" style="width: 60%;">
