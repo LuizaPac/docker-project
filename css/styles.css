@@ -19,7 +19,7 @@ body {
 
 /*********************SIDE BAR*********************/
 .sidebar {
-    width: 250px;
+    width: 230px;
     background-color: var(--blue-shadow);
     color: var(--white);
     padding: 20px;
@@ -68,9 +68,60 @@ body {
 }
 
 
-.content {
-    margin-left: 240px; /* Largura da sidebar + margem extra */
-    padding: 20px;
+/********************* UPPER-BAR *********************/
+
+.upper-bar {
+  width: 100%;
+  height: 50px;
+  background-color: var(--blue-light);
+  color: var(--white);
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  position: fixed;
+  top: 0;
+  left: 270px;
+  z-index: 1000;
 }
 
-/*********************COLOR SCHEME*********************/
+.upper-bar .logo {
+  height: 30px;
+  margin-right: 15px;
+}
+
+/********************* BOTTOM-BAR *********************/
+
+.bottom-bar {
+   /* Pra descontar a largura da sidebar */
+  height: 200px;
+  background-color: var(--blue-dark);
+  color: var(--white);
+  padding: 10px 20px;
+  text-align: center;
+  margin-top: 40px;
+  position: relative;
+}
+
+/********************* CONTEUDO *********************/
+
+.wrap{
+    margin-left: 270px;
+
+}
+
+.capa {
+    text-align: center;
+    position: relative;
+    border-radius: 10px;
+    margin-bottom: 40px;
+}
+.capa p{
+    text-align: right;
+}
+
+.content {
+    padding-top: 70px; /* Upper-bar */
+    padding-left: 20px;
+    padding-right: 20px;
+    color: var(--blue-dark);
+}
