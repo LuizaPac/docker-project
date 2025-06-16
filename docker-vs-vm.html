@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <title>Docker - Introdução</title>
 </head>
@@ -14,13 +15,30 @@
     <div class="sidebar">
         <h2>Menu</h2>
         <ul>
-            <div><li class="deactive"><a href="index.html">Introdução</a></li></div>
-            <div><li class="deactive"><a href="arquitetura.html">Arquitetura</a></li></div>
-            <div><li class="active"><a href="docker-vs-vm.html">Docker vs VMs</a></li></div>
-            <div><li class="deactive"><a href="docker-networking.html">Docker Networking</a></li></div>
-            <div><li class="deactive"><a href="vantagens-desvantagens.html">Vantagens e Desvantagens</a></li></div>
-            <div><li class="deactive"><a href="seguranca.html">Segurança</a></li></div>
-            <div><li class="deactive"><a href="casos-uso.html">Casos de Uso</a></li></div>
+            <div>
+                <li class="deactive"><a href="index.html">Introdução</a></li>
+            </div>
+            <div>
+                <li class="deactive"><a href="arquitetura.html">Arquitetura</a></li>
+            </div>
+            <div>
+                <li class="active"><a href="docker-vs-vm.html">Docker vs VMs</a></li>
+            </div>
+            <div>
+                <li class="deactive"><a href="docker-networking.html">Docker Networking</a></li>
+            </div>
+            <div>
+                <li class="deactive"><a href="vantagens-desvantagens.html">Vantagens e Desvantagens</a></li>
+            </div>
+            <div>
+                <li class="deactive"><a href="seguranca.html">Segurança</a></li>
+            </div>
+            <div>
+                <li class="deactive"><a href="casos-uso.html">Casos de Uso</a></li>
+            </div>
+            <div>
+                <li class="active"><a href="bibliografia.html">Bibliografia</a></li>
+            </div>
         </ul>
     </div>
 
@@ -40,57 +58,62 @@
 
         <div class="content">
 
-            
+
 
             <h2>Menu</h2>
             <p>
-                 A comparação entre Docker e Máquinas Virtuais (MVs) envolve diferenças 
-                 fundamentais na maneira como cada tecnologia gerencia o isolamento de aplicações 
-                 e o uso de recursos do sistema. 
-            </p> 
+                A comparação entre Docker e Máquinas Virtuais (MVs) envolve diferenças
+                fundamentais na maneira como cada tecnologia gerencia o isolamento de aplicações
+                e o uso de recursos do sistema.
+            </p>
 
             <img src="./images/dk-vs-vm.png">
 
             <h2>Arquitetura das Máquinas Virtuais</h2>
-            <p> 
-                As Máquinas Virtuais operam sobre um hipervisor, 
-                que permite a execução simultânea de múltiplos sistemas operacionais sobre um mesmo hardware. 
-                Cada MV possui seu próprio kernel, sistema de arquivos, bibliotecas e dependências. 
+            <p>
+                As Máquinas Virtuais operam sobre um hipervisor,
+                que permite a execução simultânea de múltiplos sistemas operacionais sobre um mesmo hardware.
+                Cada MV possui seu próprio kernel, sistema de arquivos, bibliotecas e dependências.
                 Isso garante isolamento completo, mas com um custo alto em termos de desempenho e consumo de recursos
-                (KUMAR; SHARMA, 2017). O tempo de inicialização das MVs é relativamente elevado, e a densidade de instâncias por servidor físico é limitada.
-            </p> 
+                (KUMAR; SHARMA, 2017). O tempo de inicialização das MVs é relativamente elevado, e a densidade de
+                instâncias por servidor físico é limitada.
+            </p>
 
             <h2>Eficiência e Leveza dos Containers Docker</h2>
-            <p> 
-                O Docker, por sua vez, utiliza uma abordagem de contenção baseada no compartilhamento 
-                do kernel do sistema operacional do host. Cada container contém apenas o necessário para a aplicação funcionar,
-                como bibliotecas específicas e arquivos binários. Isso reduz consideravelmente o uso de CPU, memória e armazenamento,
+            <p>
+                O Docker, por sua vez, utiliza uma abordagem de contenção baseada no compartilhamento
+                do kernel do sistema operacional do host. Cada container contém apenas o necessário para a aplicação
+                funcionar,
+                como bibliotecas específicas e arquivos binários. Isso reduz consideravelmente o uso de CPU, memória e
+                armazenamento,
                 além de permitir inicializações quase instantâneas (DUPCLOUD, 2024).
-            </p> 
+            </p>
 
             <h2>Portabilidade e Facilidade de Implantação</h2>
-            <p> 
-                Outra vantagem do Docker é a sua portabilidade. 
-                Como os containers encapsulam todas as dependências da aplicação, eles podem ser executados em 
-                qualquer ambiente compatível com Docker, sem a necessidade de configuração adicional, o que não é trivial em ambientes
-                com MVs.    
-            </p> 
+            <p>
+                Outra vantagem do Docker é a sua portabilidade.
+                Como os containers encapsulam todas as dependências da aplicação, eles podem ser executados em
+                qualquer ambiente compatível com Docker, sem a necessidade de configuração adicional, o que não é
+                trivial em ambientes
+                com MVs.
+            </p>
 
             <h2>Limitações dos Containers e Papel das MVs</h2>
-            <p> 
-                No entanto, o Docker não substitui completamente as máquinas virtuais. 
-                Em cenários onde é necessário executar sistemas operacionais distintos ou quando há requisitos de 
-                isolamento extremamente rigorosos (como em ambientes multi-tenant sensíveis), as MVs ainda são a escolha mais adequada.
-            </p> 
+            <p>
+                No entanto, o Docker não substitui completamente as máquinas virtuais.
+                Em cenários onde é necessário executar sistemas operacionais distintos ou quando há requisitos de
+                isolamento extremamente rigorosos (como em ambientes multi-tenant sensíveis), as MVs ainda são a escolha
+                mais adequada.
+            </p>
 
             <img src="./images/Docke-vs-VM-2.png">
-            
+
             <h2>Abordagem Híbrida: O Melhor dos Dois Mundos</h2>
-            <p> 
+            <p>
                 Segundo a AWS (2024), uma combinação de ambas as tecnologias pode ser vantajosa, utilizando
-             VMs para fornecer camadas de isolamento seguras e Docker para empacotar e escalar aplicações 
-             de forma leve e flexível. Essa abordagem híbrida é cada vez mais comum em arquiteturas modernas.
-            </p> 
+                VMs para fornecer camadas de isolamento seguras e Docker para empacotar e escalar aplicações
+                de forma leve e flexível. Essa abordagem híbrida é cada vez mais comum em arquiteturas modernas.
+            </p>
         </div>
 
         <!------------------ Bottom Bar --------------------->
